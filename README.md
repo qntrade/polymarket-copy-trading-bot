@@ -2,8 +2,6 @@
 
 > Automated copy trading bot for Polymarket that mirrors trades from top performers with intelligent position sizing and real-time execution.
 
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
-[![Python Version](https://img.shields.io/badge/python-%3E%3D3.10-brightgreen.svg)](https://www.python.org/)
 
 ## Overview
 
@@ -11,7 +9,7 @@ This is the Python version of the Polymarket Copy Trading Bot. It automatically 
 
 ### How It Works
 
-1. **Select Traders** - Choose top performers from [Polymarket leaderboard](https://polymarket.com/leaderboard) or [Predictfolio](https://predictfolio.com)
+1. **Select Traders** - Choose top performers from [Polymarket leaderboard](https://polymarket.com/leaderboard)
 2. **Monitor Activity** - Bot continuously watches for new positions opened by selected traders using Polymarket Data API
 3. **Calculate Size** - Automatically scales trades based on your balance vs. trader's balance
 4. **Execute Orders** - Places matching orders on Polymarket using your wallet
@@ -29,7 +27,7 @@ This is the Python version of the Polymarket Copy Trading Bot. It automatically 
 
 ```bash
 # Clone repository
-git clone https://github.com/apemoonspin/polymarket-copy-trading-bot.git
+git clone https://github.com/gamma-trade-lab/polymarket-copy-trading-bot.git
 cd polymarket-copy-trading-bot
 
 # Install dependencies
@@ -143,205 +141,6 @@ Create a `.env` file with the following variables:
 - **Price Protection** - Built-in slippage checks to avoid unfavorable fills
 - **Colored Logging** - Beautiful colored console output for better monitoring
 
-## Project Structure
-
-```
-polymarket-copy-trading-bot/
-│
-├── 📄 Configuration Files
-│   ├── .env                    # Environment variables (create via setup)
-│   ├── .env.example            # Example environment file
-│   ├── requirements.txt        # Python dependencies
-│   ├── pyproject.toml          # Python project metadata
-│   ├── package.json            # Legacy reference (Python project)
-│   └── docker-compose.yml      # Docker configuration
-│
-├── 📚 Documentation
-│   ├── README.md               # Main documentation
-│   ├── README_PYTHON.md        # This file - Python-specific documentation
-│   ├── PYTHON_SCRIPTS_STATUS.md # Script conversion status
-│   ├── PROJECT_STRUCTURE.md    # Detailed project structure
-│   └── docs/                   # Additional documentation
-│       ├── GETTING_STARTED.md
-│       ├── QUICK_START.md
-│       ├── SIMULATION_GUIDE.md
-│       └── ...
-│
-├── 🐍 Source Code
-│   └── src/
-│       │
-│       ├── 🚀 Entry Point
-│       │   └── main.py                    # Main bot entry point
-│       │
-│       ├── ⚙️ Configuration
-│       │   └── config/
-│       │       ├── __init__.py
-│       │       ├── env.py                 # Environment variable loading & validation
-│       │       └── copy_strategy.py        # Copy trading strategy logic
-│       │
-│       ├── 📊 Data Models
-│       │   └── models/
-│       │       ├── __init__.py
-│       ├── 🔌 Type Definitions
-│       │   └── interfaces/
-│       │       ├── __init__.py
-│       │       └── user.py                 # Type definitions (UserActivity, UserPosition)
-│       │
-│       ├── 🔄 Core Services
-│       │   └── services/
-│       │       ├── __init__.py
-│       │       ├── trade_monitor.py        # Monitor trader activity (RTDS/API polling)
-│       │       └── trade_executor.py       # Execute trades based on monitored activity
-│       │
-│       ├── 🛠️ Utilities
-│       │   └── utils/
-│       │       ├── __init__.py
-│       │       ├── __main__.py
-│       │       ├── logger.py               # Colored logging & console output
-│       │       ├── fetch_data.py           # HTTP requests with retry logic
-│       │       ├── get_my_balance.py       # Get USDC balance from blockchain
-│       │       ├── create_clob_client.py   # Create Polymarket CLOB client
-│       │       ├── post_order.py           # Calculate & post orders to Polymarket
-│       │       └── system_status.py        # System status & diagnostics
-│       │
-│       └── 📜 Management Scripts
-│           └── scripts/
-│               ├── __init__.py
-│               ├── __main__.py
-│               │
-│               └── Note: All scripts are located directly in `src/scripts/`.
-│                   The organization below is logical grouping by category.
-│               │
-│               ├── 🔧 Setup & Configuration (setup/)
-│               │   ├── setup.py                  # Interactive setup wizard
-│               │   ├── system_status.py          # Verify system status & connections
-│               │   └── help.py                   # Display all available commands
-│               │
-│               ├── 💰 Wallet Management (wallet/)
-│               │   ├── check_proxy_wallet.py     # Check proxy & main wallet
-│               │   ├── check_both_wallets.py     # Compare two wallets
-│               │   ├── check_my_stats.py         # View wallet statistics
-│               │   ├── check_recent_activity.py  # Check recent trading activity
-│               │   ├── check_positions_detailed.py # View detailed positions
-│               │   ├── check_pnl_discrepancy.py  # P&L discrepancy analysis
-│               │   ├── verify_allowance.py       # Verify USDC allowance
-│               │   ├── check_allowance.py         # Check & set USDC allowance
-│               │   ├── set_token_allowance.py    # Set ERC1155 token allowance
-│               │   ├── find_my_eoa.py            # Find & analyze EOA wallet
-│               │   └── find_gnosis_safe_proxy.py # Find Gnosis Safe proxy
-│               │
-│               ├── 📊 Position Management (position/)
-│               │   ├── manual_sell.py           # Manually sell position
-│               │   ├── sell_large_positions.py   # Sell large positions
-│               │   ├── close_stale_positions.py  # Close stale positions
-│               │   ├── close_resolved_positions.py # Close resolved positions
-│               │   └── redeem_resolved_positions.py # Redeem resolved positions
-│               │   ⚠️  Note: Requires full CLOB client implementation
-│               │
-│               ├── 🔍 Trader Research (research/)
-│               │   ├── find_best_traders.py      # Find best performing traders
-│               │   ├── find_low_risk_traders.py  # Find low-risk traders
-│               │   ├── scan_best_traders.py      # Scan and analyze top traders
-│               │   └── scan_traders_from_markets.py # Scan traders from markets
-│               │
-│               └── 📈 Simulation & Analysis (simulation/)
-│                   ├── simulate_profitability.py # Simulate profitability
-│                   ├── simulate_profitability_old.py # Old simulation logic
-│                   ├── run_simulations.py        # Run batch simulations
-│                   ├── compare_results.py        # Compare simulation results
-│                   ├── aggregate_results.py      # Aggregate trading results
-│                   ├── audit_copy_trading.py      # Audit copy trading algorithm
-│                   └── fetch_historical_trades.py # Fetch historical trade data
-│
-├── 📁 Runtime Directories
-│   ├── logs/                    # Application logs (auto-created)
-│   │   └── bot-YYYY-MM-DD.log  # Daily log files
-│   │
-│   ├── trader_data_cache/       # Cached trader data (auto-created)
-│   │   └── {address}_{days}d_{date}.json
-│   │
-│   ├── simulation_results/      # Simulation results (auto-created)
-│   │   └── {strategy}_{trader}_{date}.json
-│   │
-│   ├── audit_results/           # Audit reports (auto-created)
-│   │   └── audit_{timestamp}.json
-│   │
-│   └── strategy_factory_results/ # Strategy analysis results (auto-created)
-│       └── aggregated_results.json
-│
-└── 🐳 Deployment
-    ├── Dockerfile               # Docker image definition
-    └── docker-compose.yml       # Docker Compose configuration
-```
-
-### Directory Roles
-
-#### **Configuration (`src/config/`)**
-- **env.py**: Loads and validates environment variables from `.env` file
-- **copy_strategy.py**: Implements copy trading logic (position sizing, multipliers, limits)
-
-#### **Data Models (`src/models/`)**
-#### **Type Definitions (`src/interfaces/`)**
-- **user.py**: Type definitions for UserActivity and UserPosition interfaces
-
-#### **Core Services (`src/services/`)**
-- **trade_monitor.py**: Monitors trader activity via RTDS WebSocket or API polling
-- **trade_executor.py**: Executes trades based on monitored activity with aggregation support
-
-#### **Utilities (`src/utils/`)**
-- **logger.py**: Colored console logging with various log levels
-- **fetch_data.py**: Async HTTP requests with retry logic and error handling
-- **get_my_balance.py**: Get USDC balance from Polygon blockchain
-- **create_clob_client.py**: Create and configure Polymarket CLOB client (needs full implementation)
-- **post_order.py**: Calculate order sizes and post orders to Polymarket
-- **system_status.py**: System status and diagnostics utilities
-
-#### **Management Scripts (`src/scripts/`)**
-
-**Setup & Configuration:**
-- **setup.py**: Interactive setup wizard for initial configuration
-- **system_status.py**: Verify system status, connections, and configuration
-- **help.py**: Display all available commands and usage information
-
-**Wallet Management:**
-- **check_proxy_wallet.py**: Check proxy wallet balance and positions
-- **check_both_wallets.py**: Compare two wallet addresses
-- **check_my_stats.py**: View trading statistics
-- **check_recent_activity.py**: See recent trading activity
-- **check_positions_detailed.py**: View detailed position information
-- **check_pnl_discrepancy.py**: Check P&L discrepancy analysis
-- **verify_allowance.py**: Verify USDC token allowance
-- **check_allowance.py**: Check and set USDC allowance
-- **set_token_allowance.py**: Set ERC1155 token allowance
-- **find_my_eoa.py**: Find and analyze EOA wallet
-- **find_gnosis_safe_proxy.py**: Find Gnosis Safe proxy wallet
-
-**Position Management:**
-- **manual_sell.py**: Manually sell a specific position
-- **sell_large_positions.py**: Sell large positions
-- **close_stale_positions.py**: Close stale/old positions
-- **close_resolved_positions.py**: Close resolved positions
-- **redeem_resolved_positions.py**: Redeem resolved positions
-- ⚠️ **Note**: These require full CLOB client implementation
-
-**Trader Research:**
-- **find_best_traders.py**: Find best performing traders by ROI and metrics
-- **find_low_risk_traders.py**: Find low-risk traders with good risk metrics
-- **scan_best_traders.py**: Scan and analyze top traders from markets
-- **scan_traders_from_markets.py**: Scan traders from active markets
-
-**Simulation & Analysis:**
-- **simulate_profitability.py**: Simulate profitability for a trader
-- **simulate_profitability_old.py**: Old simulation logic (legacy algorithm)
-- **run_simulations.py**: Run comprehensive batch simulations with presets
-- **compare_results.py**: Compare simulation results side-by-side
-- **aggregate_results.py**: Aggregate trading results across strategies
-- **audit_copy_trading.py**: Audit copy trading algorithm performance
-- **fetch_historical_trades.py**: Fetch and cache historical trade data
-
-#### **Entry Point (`src/main.py`)**
-- Main application entry point that initializes services and handles graceful shutdown
-
 ## Key Differences from TypeScript Version
 
 - **Async/Await**: Python uses `asyncio` for async operations
@@ -397,80 +196,8 @@ The Polymarket CLOB (Central Limit Order Book) client is a critical component th
 
 **Run system status check:** `python -m src.scripts.setup.system_status`
 
-## Development
-
-### Running Tests
-
-```bash
-# Run tests (when implemented)
-pytest
-```
-
-### Code Style
-
-This project follows PEP 8 style guidelines. Consider using:
-- `black` for code formatting
-- `flake8` or `pylint` for linting
-- `mypy` for type checking
-
-### Dependencies
-
-Key Python packages:
-- `web3` - Ethereum/Polygon blockchain interaction
-- `httpx` - Async HTTP client
-- `colorama` - Cross-platform colored terminal output
-- `python-dotenv` - Environment variable management
-- `asyncio` - Asynchronous programming (built-in)
-- `websockets` - WebSocket client for RTDS
-
-See `requirements.txt` for complete list.
-
-## Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
 ISC License - See [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- Built on [Polymarket CLOB Client](https://github.com/Polymarket/clob-client) (JavaScript SDK)
-- Uses [Predictfolio](https://predictfolio.com) for trader analytics
-- Powered by Polygon network
-
----
-
-**Disclaimer:** This software is for educational purposes only. Trading involves risk of loss. The developers are not responsible for any financial losses incurred while using this bot.
-
-**Note:** This Python version is a complete conversion from the original TypeScript version. All TypeScript files have been removed. For production use, ensure the CLOB client is fully implemented or use the JavaScript SDK bridge.
-
-**📊 Conversion Status:** See [PYTHON_SCRIPTS_STATUS.md](./PYTHON_SCRIPTS_STATUS.md) for a complete list of converted scripts and their status.
-
-**📁 Project Structure:** See [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for detailed file and folder organization by role.
-
-## Documentation
-
-Comprehensive documentation is available in the `docs/` directory:
-
-- **[Getting Started Guide](docs/GETTING_STARTED.md)** - Complete step-by-step setup and first run
-- **[Strategy Guide](docs/STRATEGY.md)** ⭐ - Understanding copy trading strategy and configuration
-- **[Trading Strategies Detailed](docs/TRADING_STRATEGIES_DETAILED.md)** - Step-by-step examples, exact calculations, and ready-to-use `.env` configs
-- **[Command Reference](docs/COMMAND_REFERENCE.md)** - Detailed reference for all commands
-- **[Usage Examples](docs/EXAMPLES.md)** - Practical examples for common tasks
-
-### Quick Links
-
-- 🚀 [Getting Started](docs/GETTING_STARTED.md) - Start here for first-time setup
-- 📊 [Strategy Guide](docs/STRATEGY.md) - Understand how the bot works and configure strategy
-- 📋 [Trading Strategies Detailed](docs/TRADING_STRATEGIES_DETAILED.md) - Examples, calculations, copy-paste configs
-- 📖 [Command Reference](docs/COMMAND_REFERENCE.md) - All available commands explained
-- 💡 [Examples](docs/EXAMPLES.md) - Real-world usage examples
-- 📁 [Project Structure](PROJECT_STRUCTURE.md) - File organization
-- 📊 [Script Status](PYTHON_SCRIPTS_STATUS.md) - Conversion status
