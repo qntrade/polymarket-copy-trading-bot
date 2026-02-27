@@ -19,7 +19,7 @@ This is the Python version of the Polymarket Copy Trading Bot. It automatically 
 
 https://github.com/user-attachments/assets/82f5404a-24b3-4e0e-8a8a-ef3264e4359f
 
-I've decided to copy Vidarx's trades. Looking at his profit curve, it just keeps going up over the whole time period. He mostly trades on very short time frames like 15-minute or 5-minute charts — these markets are super volatile and move fast.His strategy is really unique, and at one point his trades completely beat (or outperformed) Gabagool's trading. But now Gabagool's style seems almost dead or not working anymore.
+I've decided to copy Vidarx's trades. Looking at his profit curve, it just keeps going up over the whole time period. He mostly trades on very short time frames like 15-minute or 5-minute charts — these markets are super volatile and move fast. His strategy is really unique, and at one point his trades completely beat (or outperformed) Gabagool's trading. But now Gabagool's style seems almost dead or not working anymore.
 
 In short: by copying him in the BTC 5-minute market during one cycle (one trading period), we made $256 in profit.
 
