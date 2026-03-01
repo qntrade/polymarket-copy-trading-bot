@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "polymarket-copy-trading-bot"
 version = "1.0.0"
-description = "Automated copy trading bot for Polymarket"
+description = "Automated copytrading bot for Polymarket"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
