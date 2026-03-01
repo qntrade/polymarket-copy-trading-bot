@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ## Step 2: Get Polygon RPC Endpoint
 
-### Option A: Alchemy (Recommended - Free)
+### Option A: Alchemy (Recommended)
 
 1. Go to [Alchemy](https://www.alchemy.com)
 2. Create a free account
