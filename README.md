@@ -90,15 +90,15 @@ The Polymarket CLOB (Central Limit Order Book) client is a critical component th
 
 ## Safety & Risk Management
 
-⚠️ **Important Disclaimers:**
-
 - **Use at your own risk** - This bot executes real trades with real money
 - **Start small** - Test with minimal funds before scaling up
 - **Diversify** - Don't copy just one trader; track multiple strategies
 - **Monitor regularly** - Check bot logs daily to ensure proper execution
 - **No guarantees** - Past performance doesn't guarantee future results
 
-## License
+## Discover More Bots
 
-ISC License - See [LICENSE](LICENSE) file for details.
+To see more profitable bots for traders, visit https://github.com/gamma-trade-lab/
+
+
 
