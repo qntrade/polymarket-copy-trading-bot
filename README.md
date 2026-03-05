@@ -2,6 +2,7 @@
 
 > Automated copy trading bot for Polymarket that mirrors trades from top performers with intelligent position sizing and real-time execution.
 
+Want to learn more or get setup help? Please connect with our techy team on Telegram: [@qntrade](https://t.me/qntrade) 🚀
 
 ## Overview
 
@@ -96,9 +97,12 @@ The Polymarket CLOB (Central Limit Order Book) client is a critical component th
 - **Monitor regularly** - Check bot logs daily to ensure proper execution
 - **No guarantees** - Past performance doesn't guarantee future results
 
-## Discover More Bots
+## 📞 Get Support
 
-To see more profitable bots for traders, visit https://github.com/qntrade/
+Need help setting up your Polymarket bot or want to optimize your trading strategy?  
+Connect directly with our expert team and start trading smarter!  
 
+🚀 **Fastest Support:** [Telegram: @qntrade](https://t.me/qntrade)  
 
+Wishing you smooth fills and profitable spreads — happy trading! 📈
 
